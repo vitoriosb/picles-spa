@@ -1,11 +1,19 @@
 import { useState } from "react";
+import Button from "./components/common/Button/Button";
+import { ButtonVariant } from "./components/common/Button/Button.constants";
 
 export function App() {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState<number>(0);
 
   return (
-    <button onClick={() => setCount((count) => count + 1)}>
-      count is {count}
-    </button>
+    <>
+      <Button
+        onClick={() => setCount(count + 1)}
+        variant={ButtonVariant.Default}
+      >
+        <div>Quero adotar</div>
+      </Button>
+      {count}
+    </>
   );
 }
