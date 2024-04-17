@@ -5,27 +5,31 @@ import styles from "./Button.module.css";
 interface IButton extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;
 }
-
-export default function Button({ variant, children, ...rest }: IButton) {
+export function Button({
+  variant = ButtonVariant.Default,
+  children,
+  ...rest
+}: IButton) {
   let buttonClass = styles.buttonBase;
   switch (variant) {
     case ButtonVariant.Default:
-      buttonClass += `${styles.buttonDefault}`;
+      buttonClass += ` ${styles.buttonDefault}`;
       break;
     case ButtonVariant.Disabled:
-      buttonClass += `${styles.buttonDisabled}`;
+      buttonClass += ` ${styles.buttonDisabled}`;
       break;
     case ButtonVariant.Outlined:
-      buttonClass += `${styles.buttonOutlined}`;
+      buttonClass += ` ${styles.buttonOutlined}`;
       break;
     case ButtonVariant.Text:
-      buttonClass += `${styles.buttonText}`;
+      buttonClass += ` ${styles.buttonText}`;
       break;
   }
-
   return (
-    <button {...rest} className={buttonClass}>
-      {children}
-    </button>
+    <>
+      <button className={buttonClass} {...rest}>
+        {children}
+      </button>
+    </>
   );
 }
