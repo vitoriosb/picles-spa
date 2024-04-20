@@ -10,15 +10,20 @@ const router = createBrowserRouter([
   },
   {
     path: "/pets",
-    element: <Pets />,
-  },
-  {
-    path: "/pets/:id",
-    element: <PetDetails />,
+    children: [
+      {
+        index: true,
+        element: <Pets />,
+      },
+      {
+        path: "/pets/:id",
+        element: <PetDetails />,
+      },
+    ],
   },
   {
     path: "/admin",
-    element: <div>bbbb</div>,
+    element: <h1>Admin</h1>,
   },
 ]);
 

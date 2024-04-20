@@ -1,18 +1,17 @@
 import { Link } from "react-router-dom";
 import dog from "../../assets/dog.svg";
-import { Button } from "../../components/common/Button";
-import { ButtonVariant } from "../../components/common/Button/Button.constants";
+import { Button, ButtonVariant } from "../../components/common/Button";
 import styles from "./Home.module.css";
 
 export function Home() {
   return (
     <div className={styles.container}>
-      <img src={dog} />
-      <Link to={"/pets"}>
-        <Button variant={ButtonVariant.Default}>Quero Adotar</Button>
+      <img src={dog} width="278px" />
+      <Link to="/pets">
+        <Button variant={ButtonVariant.Default}>Quero adotar</Button>
       </Link>
-      <Link to={"/admin"}>
-        <Button variant={ButtonVariant.Outlined}>Tenho um Abrigo</Button>
+      <Link to="/admin">
+        <Button variant={ButtonVariant.Outlined}>Tenho um abrigo</Button>
       </Link>
     </div>
   );

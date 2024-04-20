@@ -5,6 +5,7 @@ import styles from "./Button.module.css";
 interface IButton extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;
 }
+
 export function Button({
   variant = ButtonVariant.Default,
   children,
@@ -25,11 +26,10 @@ export function Button({
       buttonClass += ` ${styles.buttonText}`;
       break;
   }
+
   return (
-    <>
-      <button className={buttonClass} {...rest}>
-        {children}
-      </button>
-    </>
+    <button className={buttonClass} {...rest}>
+      {children}
+    </button>
   );
 }
