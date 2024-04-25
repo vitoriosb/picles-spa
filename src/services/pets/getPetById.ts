@@ -6,7 +6,7 @@ export async function getPetById(id: string): Promise<IPet> {
     const response = await httpClient.get(`/pet/${id}`);
     return response.data;
   } catch (error) {
-    console.error("Erro em buscar o pet");
+    console.error("Erro ao buscar Pet por id", error);
     throw error;
   }
 }

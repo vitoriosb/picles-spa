@@ -37,14 +37,13 @@ export function PetDetails() {
               <Skeleton width={180} height={24} style={{ margin: 16 }} />
             </div>
           )}
-
           {!isLoading && (
             <>
               <ImageBase64 src={petData?.photo} className={styles.picture} />
               {petIsError && (
                 <>
                   <h1>Pet não encontrado</h1>
-                  <Link to={"/pets/"}> Voltar para Listagem</Link>
+                  <Link to="/pets/">Voltar para a listagem</Link>
                 </>
               )}
               {!petIsError && (
@@ -54,15 +53,14 @@ export function PetDetails() {
                   <p>{petData?.bio}</p>
                   {!shelterIsError && (
                     <a
-                      href={`https://wa.me/${shelterData?.shelterWhatsApp}?text='Olá, gostaria de falar sobre ${petData?.name}`}
+                      href={`https://wa.me/${shelterData?.shelterWhatsApp}?text=Olá, gostaria de falar sobre ${petData?.name}`}
                       target="_blank"
                     >
-                      <Button
-                        variant={ButtonVariant.Text}
-                        className={styles.buttonWhatsapp}
-                      >
-                        <img src={whatsapp} />
-                        Entre em contato com o abrigo
+                      <Button variant={ButtonVariant.Text}>
+                        <span className={styles.buttonWhatsapp}>
+                          <img src={whatsapp} />
+                          Entre em contato com o abrigo
+                        </span>
                       </Button>
                     </a>
                   )}

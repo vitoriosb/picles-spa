@@ -15,5 +15,6 @@ export function useShelter(
     queryKey: ["get-shelter"],
     queryFn: () => getShelter(),
   });
+
   return result;
 }

@@ -6,7 +6,7 @@ export async function getShelter(): Promise<IShelter> {
     const response = await httpClient.get("/shelter");
     return response.data;
   } catch (error) {
-    console.error("Erro ao buscar abrigo");
+    console.error("Erro ao buscar abrigo", error);
     throw error;
   }
 }

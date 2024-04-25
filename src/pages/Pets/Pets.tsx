@@ -1,11 +1,11 @@
 import { ChangeEvent, FormEvent, useState } from "react";
-import Skeleton from "react-loading-skeleton";
 import { useSearchParams } from "react-router-dom";
 import { Button, ButtonVariant } from "../../components/common/Button";
 import { Card } from "../../components/common/Card";
 import { Header } from "../../components/common/Header";
 import { Pagination } from "../../components/common/Pagination";
 import { Select } from "../../components/common/Select";
+import { Skeleton } from "../../components/common/Skeleton";
 import { Grid } from "../../components/layout/Grid";
 import { usePetList } from "../../hooks/usePetList";
 import { GetPetsRequest } from "../../interfaces/pet";
@@ -24,6 +24,20 @@ export function Pets() {
   };
 
   const { data, isLoading } = usePetList(urlParams);
+
+  function checkButtonStatus(event: ChangeEvent<HTMLFormElement>) {
+    const { type, size, gender } = getFormValue(event.target.form);
+
+    if (
+      type !== urlParams.type ||
+      size !== urlParams.size ||
+      gender !== urlParams.gender
+    ) {
+      setIsButtonEnabled(true);
+    } else {
+      setIsButtonEnabled(false);
+    }
+  }
 
   function checkButtonStatus(event: ChangeEvent<HTMLFormElement>) {
     const { type, size, gender } = getFormValue(event.target.form);
@@ -72,6 +86,7 @@ export function Pets() {
     const newSearchParams = updateSearchParams(formValues);
 
     setSearchParams(newSearchParams);
+    setIsButtonEnabled(false);
   }
 
   return (
